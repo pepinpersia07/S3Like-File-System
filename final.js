@@ -17,59 +17,6 @@ if (!fs.existsSync(STORAGE_DIR)) {
 }
 
 // 📌 Multer Storage Configuration
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         const userId = req.body.userId || "defaultUser";
-//         const category = req.body.category || "uncategorized";
-
-//         const uploadPath = path.join(STORAGE_DIR, userId, category);
-
-//         // ✅ Ensure directory exists
-//         if (!fs.existsSync(uploadPath)) {
-//             fs.mkdirSync(uploadPath, { recursive: true });
-//         }
-
-//         cb(null, uploadPath);
-//     },
-//     filename: (req, file, cb) => {
-//         if (!file || !file.originalname) {
-//             return cb(new Error("Invalid file upload"));
-//         }
-
-//         const ext = path.extname(file.originalname);
-//         const baseName = path.basename(file.originalname, ext);
-//         const timestamp = Date.now();
-//         const newFileName = `${baseName}_${timestamp}${ext}`;
-
-//         cb(null, newFileName);
-//     }
-// });
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         const userId = req.body.userId || "defaultUser";
-//         const category = req.body.category || "uncategorized";
-
-//         const uploadPath = path.join(STORAGE_DIR, userId, category);
-
-//         if (!fs.existsSync(uploadPath)) {
-//             fs.mkdirSync(uploadPath, { recursive: true });
-//         }
-
-//         cb(null, uploadPath);
-//     },
-//     filename: (req, file, cb) => {
-//         if (!file || !file.originalname) {
-//             return cb(new Error("Invalid file upload"));
-//         }
-
-//         const ext = path.extname(file.originalname);
-//         const baseName = path.basename(file.originalname, ext);
-//         const timestamp = Date.now();
-//         const newFileName = `${baseName}_${timestamp}${ext}`;
-
-//         cb(null, newFileName);
-//     }
-// });
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         // ⚠️ `req.body` is only available AFTER multer processes the request
